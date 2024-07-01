@@ -9,22 +9,72 @@
             rel="stylesheet"
         />
         <link
+            href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+
+        <link
             rel="stylesheet"
             href="{{ url_for('static', filename='css/style.css') }}"
         />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
+    {% extends "header," %}
+
     <body>
+        {% block content %}
+
         <div class="container">
             <h1>Investment Calculator</h1>
             <div class="calculator-container">
                 <div class="calculators">
-                    <div class="calculator" id="sip-calculator">
+                    <div class="tab">
+                        <button
+                            class="tablinks"
+                            onclick="openCalculator(event, 'sip-calculator')"
+                            id="defaultOpen"
+                        >
+                            SIP Calculator
+                        </button>
+                        <button
+                            class="tablinks"
+                            onclick="openCalculator(event, 'gold-calculator')"
+                        >
+                            Gold Investment Calculator
+                        </button>
+                        <button
+                            class="tablinks"
+                            onclick="openCalculator(event, 'fd-calculator')"
+                        >
+                            Fixed Deposit Calculator
+                        </button>
+                    </div>
+
+                    <div id="sip-calculator" class="tabcontent">
                         <h2>SIP Calculator</h2>
+                        <div class="sip-type">
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="sip-type"
+                                    value="monthly"
+                                    checked
+                                />
+                                Monthly
+                            </label>
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="sip-type"
+                                    value="lumpsum"
+                                />
+                                Lumpsum
+                            </label>
+                        </div>
                         <div class="slider-container">
                             <label for="sip-amount"
-                                >Monthly Investment: ₹<span
-                                    id="sip-amount-value"
+                                >Investment Amount: ₹<span id="sip-amount-value"
                                     >5000</span
                                 ></label
                             >
@@ -66,12 +116,30 @@
                                 value="12"
                             />
                         </div>
+                        <div
+                            class="slider-container"
+                            id="yearly-increase-container"
+                        >
+                            <label for="sip-yearly-increase"
+                                >Yearly Increase:
+                                <span id="sip-yearly-increase-value">0</span
+                                >%</label
+                            >
+                            <input
+                                type="range"
+                                id="sip-yearly-increase"
+                                min="0"
+                                max="20"
+                                step="1"
+                                value="0"
+                            />
+                        </div>
                         <button onclick="calculate('sip')">
                             Calculate SIP
                         </button>
                     </div>
 
-                    <div class="calculator" id="gold-calculator">
+                    <div id="gold-calculator" class="tabcontent">
                         <h2>Gold Investment Calculator</h2>
                         <div class="slider-container">
                             <label for="gold-amount"
@@ -123,7 +191,7 @@
                         </button>
                     </div>
 
-                    <div class="calculator" id="fd-calculator">
+                    <div id="fd-calculator" class="tabcontent">
                         <h2>Fixed Deposit Calculator</h2>
                         <div class="slider-container">
                             <label for="fd-amount"
@@ -194,5 +262,40 @@
         </div>
 
         <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+        {% endblock %}
     </body>
+
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+        <div
+            class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+        >
+            <span
+                class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+                >© 2023
+                <a href="https://flowbite.com/" class="hover:underline"
+                    >Flowbite™</a
+                >. All Rights Reserved.
+            </span>
+            <ul
+                class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+            >
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6"
+                        >Privacy Policy</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6"
+                        >Licensing</a
+                    >
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
 </html>
