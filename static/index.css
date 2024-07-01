@@ -1,0 +1,141 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #343541;
+  color: #ececf1;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #565869;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.plan-info {
+  font-size: 14px;
+}
+
+.upgrade-link {
+  color: #10a37f;
+  text-decoration: none;
+}
+
+.greeting {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.chat-container {
+  background-color: #444654;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+#chat-messages {
+  min-height: 300px;
+  margin-bottom: 20px;
+}
+
+.input-area {
+  display: flex;
+  align-items: flex-end;
+}
+
+#user-input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid #565869;
+  border-radius: 8px;
+  background-color: #40414f;
+  color: #ececf1;
+  font-size: 16px;
+  resize: none;
+  min-height: 24px;
+  max-height: 200px;
+}
+
+#send-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+
+.send-icon {
+  width: 24px;
+  height: 24px;
+  color: #10a37f;
+}
+
+.examples, .new-feature {
+  background-color: #444654;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.example-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.example-buttons button {
+  background-color: #565869;
+  border: none;
+  color: #ececf1;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.new-feature {
+  background-color: #3c3d4f;
+}
+
+.recent-chats {
+  background-color: #444654;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.recent-chats ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recent-chats li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}

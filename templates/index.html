@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Investment Calculator</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Investment Calculator</h1>
+            <div class="calculator-container">
+                <div class="calculators">
+                    <div class="calculator" id="sip-calculator">
+                        <h2>SIP Calculator</h2>
+                        <div class="slider-container">
+                            <label for="sip-amount"
+                                >Monthly Investment: ₹<span
+                                    id="sip-amount-value"
+                                    >5000</span
+                                ></label
+                            >
+                            <input
+                                type="range"
+                                id="sip-amount"
+                                min="500"
+                                max="100000"
+                                step="500"
+                                value="5000"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="sip-years"
+                                >Investment Period:
+                                <span id="sip-years-value">10</span>
+                                years</label
+                            >
+                            <input
+                                type="range"
+                                id="sip-years"
+                                min="1"
+                                max="30"
+                                step="1"
+                                value="10"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="sip-rate"
+                                >Expected Return Rate:
+                                <span id="sip-rate-value">12</span>%</label
+                            >
+                            <input
+                                type="range"
+                                id="sip-rate"
+                                min="1"
+                                max="30"
+                                step="0.5"
+                                value="12"
+                            />
+                        </div>
+                        <button onclick="calculate('sip')">
+                            Calculate SIP
+                        </button>
+                    </div>
+
+                    <div class="calculator" id="gold-calculator">
+                        <h2>Gold Investment Calculator</h2>
+                        <div class="slider-container">
+                            <label for="gold-amount"
+                                >Investment Amount: ₹<span
+                                    id="gold-amount-value"
+                                    >100000</span
+                                ></label
+                            >
+                            <input
+                                type="range"
+                                id="gold-amount"
+                                min="1000"
+                                max="1000000"
+                                step="1000"
+                                value="100000"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="gold-years"
+                                >Investment Period:
+                                <span id="gold-years-value">5</span>
+                                years</label
+                            >
+                            <input
+                                type="range"
+                                id="gold-years"
+                                min="1"
+                                max="30"
+                                step="1"
+                                value="5"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="gold-rate"
+                                >Expected Growth Rate:
+                                <span id="gold-rate-value">8</span>%</label
+                            >
+                            <input
+                                type="range"
+                                id="gold-rate"
+                                min="1"
+                                max="20"
+                                step="0.5"
+                                value="8"
+                            />
+                        </div>
+                        <button onclick="calculate('gold')">
+                            Calculate Gold Investment
+                        </button>
+                    </div>
+
+                    <div class="calculator" id="fd-calculator">
+                        <h2>Fixed Deposit Calculator</h2>
+                        <div class="slider-container">
+                            <label for="fd-amount"
+                                >Principal Amount: ₹<span id="fd-amount-value"
+                                    >100000</span
+                                ></label
+                            >
+                            <input
+                                type="range"
+                                id="fd-amount"
+                                min="1000"
+                                max="1000000"
+                                step="1000"
+                                value="100000"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="fd-years"
+                                >Investment Period:
+                                <span id="fd-years-value">5</span> years</label
+                            >
+                            <input
+                                type="range"
+                                id="fd-years"
+                                min="1"
+                                max="10"
+                                step="1"
+                                value="5"
+                            />
+                        </div>
+                        <div class="slider-container">
+                            <label for="fd-rate"
+                                >Interest Rate:
+                                <span id="fd-rate-value">6</span>%</label
+                            >
+                            <input
+                                type="range"
+                                id="fd-rate"
+                                min="1"
+                                max="10"
+                                step="0.1"
+                                value="6"
+                            />
+                        </div>
+                        <button onclick="calculate('fd')">Calculate FD</button>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <h2>Calculation History</h2>
+                    <div id="chat-box"></div>
+                    <div class="total-investment">
+                        <p>
+                            Total Investment:
+                            <span id="total-investment">₹0.00</span>
+                        </p>
+                        <p>
+                            Total Interest:
+                            <span id="total-interest">₹0.00</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h2>Investment Breakdown</h2>
+                <canvas id="investmentChart"></canvas>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+    </body>
+</html>

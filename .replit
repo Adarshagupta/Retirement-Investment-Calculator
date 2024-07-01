@@ -1,0 +1,22 @@
+run = "cowsay Configure me!"
+entrypoint = "README.md"
+modules = ["nodejs-20", "python-3.10"]
+
+[nix]
+channel = "stable-23_11"
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
+
+[[ports]]
+localPort = 8050
+externalPort = 3000
+
+[[ports]]
+localPort = 8080
+externalPort = 80
+
+[[ports]]
+localPort = 8081
+externalPort = 8081
